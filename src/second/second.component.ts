@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgEventBus } from 'ng-event-bus';
+
 
 @Component({
   selector: 'app-second',
@@ -6,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./second.component.css']
 })
 export class SecondComponent implements OnInit {
-
-  constructor() { }
+  constructor(private eventBus: NgEventBus) { }
 
   ngOnInit() {
   }
 
   fireEvent() {
-    
+this.eventBus.cast('message:greet', 'Hi from second!');
   }
 
 }
